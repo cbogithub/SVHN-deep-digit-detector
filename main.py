@@ -5,7 +5,7 @@ import cv2
 img = cv2.imread("Samples//1.png")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 mser = cv2.MSER(_delta = 1)
-regions = mser.detect(img, None)
+regions = mser.detect(gray, None)
 
 print len(regions)
 
