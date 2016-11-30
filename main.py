@@ -3,6 +3,9 @@
 import cv2
 
 img = cv2.imread("Samples//1.png")
+gaussian_3 = cv2.GaussianBlur(img, (9,9), 0)
+cv2.addWeighted(img, 7.5, gaussian_3, -6.5, 0, img)
+
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 mser = cv2.MSER(_delta = 1)
 regions = mser.detect(gray, None)
