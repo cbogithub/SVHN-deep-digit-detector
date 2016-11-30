@@ -12,13 +12,14 @@ regions = mser.detect(gray, None)
 
 print len(regions)
 
+clone = img.copy()
 # loop over the contours
 for region in regions:
     # fit a bounding box to the contour
-    clone = img.copy()
     (x, y, w, h) = cv2.boundingRect(region.reshape(-1,1,2))
-    cv2.rectangle(clone, (x, y), (x + w, y + h), (0, 255, 0), 1)
-    cv2.imshow('img', clone)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    if h > w:
+        cv2.rectangle(clone, (x, y), (x + w, y + h), (0, 255, 0), 1)
+cv2.imshow('img', clone)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
